@@ -19,15 +19,12 @@ const AllProducts = (props) => {
       });
   }, []);
 
-  const filterProduct = (e) => {
-    const value = e.target.value;
-    setFilterProducts(value);
+  const deleteProducts = (id) => {
+    Axios.delete(`http://localhost:3001/deleteProducts/${id}`);
   };
-
   return (
     <div>
-      <div className="form-group mt-4">
-       
+      <div className="form-group mt-4"> 
       </div>
       <div className="item-category mt-4">
         {allProducts
@@ -50,14 +47,11 @@ const AllProducts = (props) => {
                   src={"./uploads/" + product.prImage}
                   alt={product.product_name}
                 />
-                <p
-                  className="item-name"
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {product.product_name}
-                </p>
-                <p className="item-quantity">{product.product_qty}</p>
-                <p className="item-price">${product.price}</p>
+                 <button
+                    className="btn btn-danger mr-2"
+                    onClick={() => deleteProducts(product.idproducts)}>
+                    X
+                  </button>
                 <Link to={"/item/" + product.idproducts}>
                   <button className="btn btn-warning btn-sm">
                     Add to cart

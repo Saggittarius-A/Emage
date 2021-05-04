@@ -411,9 +411,7 @@ app.get("/getbilledItems", (req, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log("server is running");
-});
+
 
 
 //Emailer
@@ -440,3 +438,6 @@ transporter.sendMail(mailOptions, function(error, info){
   }
 });
 
+app.listen(3001, () => {
+  console.log("server is running");
+});

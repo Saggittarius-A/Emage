@@ -77,6 +77,7 @@ const NewProduct = () => {
               <label for="exampleFormControlFile1">Example file input</label>
               <input
                 type="file"
+                multiple
                 onChange={productImageChangeHandler}
                 className="form-control-file"
                 id="exampleFormControlFile1"

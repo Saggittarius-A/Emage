@@ -25,7 +25,7 @@ const Item = (props) => {
     let qty = e.target.value;
     setQty(qty);
   };
-  const getDetails = (prName, prPrice, prQty, prid) => {
+  const getDetails = (prPrice, prQty, prid) => {
     if (userLoginId > 0) {
       const total = parseInt(prQty) * parseInt(prPrice);
 
@@ -40,6 +40,7 @@ const Item = (props) => {
           history.push("/cart");
         })
         .catch(() => {
+          alert("Error Occured. Please try again!");
           setMsg("Error Occured. Please try again!");
         });
     } else {

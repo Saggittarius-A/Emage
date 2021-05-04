@@ -4,7 +4,6 @@ import Signup from "./Signup";
 import Login from "./Login";
 import HomeProducts from "./HomeProducts";
 import { UsersContext } from "./context/UseridContext";
-import AllProducts from "./AllProducts";
 import { LoginUserContext } from "./context/LoginUserContext";
 import Portfolio from "./Portfolio";
 
@@ -31,7 +30,7 @@ const Home = (props) => {
                 <div className="carousel-item active" data-interval="2000">
                   <div className="banner-text text1">
                     <h5> Best paper Quality !</h5>
-                    <h2>Free Shippinh! Hurry UP</h2>
+                    <h2>Free Shipping! Hurry UP</h2>
                     <p>valid until 25th of May</p>
                   </div>
                 </div>
@@ -54,7 +53,7 @@ const Home = (props) => {
           </div>
           <img src="./images/bannar1.jpg" alt="" />
         </div>
-<Portfolio></Portfolio>
+      <Portfolio></Portfolio>
         <div className="services main-container">
           <div className="services-items">
             <div className="service">
