@@ -1,4 +1,4 @@
-# Emage
+# 💥Emage
 
 ### for setting up the project create package.JSON file in server folder by running command
 
@@ -8,4 +8,4 @@
 
 ### for running client i.e market 
 ### do npm i 
-### run the project in devlopment by doing npm start now
+### run the project in devlopment mode by running command npm start now 😊
