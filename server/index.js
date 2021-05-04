@@ -22,7 +22,7 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "Shruti@2002",
-  database: "student_managment",
+  database: "emaze",
 });
 
 //User Registration
@@ -32,7 +32,7 @@ app.post("/addUser", (req, res) => {
   const password = req.body.password;
 
   db.query(
-    "INSERT INTO user(name, email, password) VALUES (?,?,?)",
+    "select new_registration(?, ?, ?)",
     [name, email, password],
     (err, result) => {
       if (err) {
@@ -91,7 +91,7 @@ app.post("/login", (req, res) => {
   const userPasswordReg = req.body.userPasswordReg;
 
   db.query(
-    "SELECT * FROM user WHERE email = ? AND password = ?",
+    "call login(?, ?)",
     [userNameReg, userPasswordReg],
     (err, result) => {
       if (err) {
@@ -105,6 +105,17 @@ app.post("/login", (req, res) => {
     }
   );
 });
+
+// app.post("/setuserid", (req, res) => {
+
+//   const sqlDelete = " SELECT get_id() ";
+
+//   db.query(sqlDelete, UId, (err, result) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//   });
+// });
 
 //upload images
 app.post("/picture", async (req, res) => {
@@ -198,7 +209,8 @@ app.post("/addToCart", (req, res) => {
   const userid = req.body.userid;
   const total = req.body.total;
   const qty = req.body.PrQty;
-  //const prImage = req.body.prImage;
+  const size = req.body.size;
+  const prImage = req.body.prImage;
 
   db.query(
     "INSERT INTO cart_items( price, qty, iduser, total, idproduct) VALUES (?,?,?,?,?)",

@@ -5,11 +5,10 @@ import { LoginUserContext } from "./context/LoginUserContext";
 
 const Item = (props) => {
   const [allItems, setAllItems] = useState([]);
-  // to store the qty of the item
   const [qty, setQty] = useState();
-
   const { userLoginId, setUserLoginId } = useContext(LoginUserContext);
   const [msg, setMsg] = useState("");
+  const[size, setSize]= useState();
   let history = useHistory();
   useEffect(() => {
     Axios.get("http://localhost:3001/getProducts")
@@ -21,12 +20,26 @@ const Item = (props) => {
       });
   }, []);
 
+  const getSize = (e) => {
+    let size = e.target.value;
+    setSize(size);
+  };
+
   const getQuantity = (e) => {
     let qty = e.target.value;
     setQty(qty);
   };
-  const getDetails = (prPrice, prQty, prid) => {
+  const getDetails = (prPrice, prQty, prid, size) => {
     if (userLoginId > 0) {
+      if(size === "4'X6'")
+      prPrice=20;
+      if(size === "6'X4'")
+      prPrice=30;
+      if(size === "8'X6'")
+      prPrice=40;
+      if(size === "6'X8'")
+      prPrice=40;
+      console.log(size);
       const total = parseInt(prQty) * parseInt(prPrice);
 
       Axios.post("http://localhost:3001/addToCart", {
@@ -35,6 +48,7 @@ const Item = (props) => {
         userid: userLoginId,
         total: total,
         prId: prid,
+        size: size
       })
         .then(() => {
           history.push("/cart");
@@ -58,8 +72,8 @@ const Item = (props) => {
                 <div className="col-md-5 col-sm-6 offset-sm-4 offset-md-4 mt-4">
                   <h2>{userLoginId}</h2>
                   <h3>{msg}</h3>
-                  <h3 className="mt-4" style={{ textTransform: "uppercase" }}>
-                    {each.product_name}
+                  <h3 className="mt-4">
+                   We mainatains photo Quality
                   </h3>
                 </div>
               </div>
@@ -72,13 +86,25 @@ const Item = (props) => {
                   />
                 </div>
                 <div className="item-desc mt-4">
-                  <p className="mt-4" style={{ fontWeight: "800" }}>
-                    Quantity: {each.product_qty}
+                <p>Please choose Size and Quantity</p>
+                  <p style={{ fontWeight: "800" }}>Size:
+                  <select
+                        onChange={getSize}
+                        className="ml-4"
+                        style={{ padding: "5px" }}
+                        required
+                      >
+                        <option value="0">4'X6'</option>
+                        <option value="1">6'X4'</option>
+                        <option value="2">8'X6'</option>
+                        <option value="3">6'X8'</option>
+                      </select>
+                  
                   </p>
-                  <p style={{ fontWeight: "800" }}>Price: ${each.price}</p>
-                  <p>{each.product_desc}</p>
                   <div className="cart-item-increment">
                     <div className="dropdown">
+                    <p className="mt-4" style={{ fontWeight: "800" }}>
+                    Quantity: 
                       <select
                         onChange={getQuantity}
                         className="ml-4"
@@ -96,6 +122,7 @@ const Item = (props) => {
                         <option value="8">8</option>
                         <option value="9">9</option>
                       </select>
+                      </p>
                     </div>
                   </div>
                   <div className="row">
@@ -113,10 +140,10 @@ const Item = (props) => {
                         <button
                           onClick={() =>
                             getDetails(
-                              each.product_name,
                               each.price,
                               qty,
-                              each.idproducts
+                              each.idproducts,
+                              size,
                             )
                           }
                           type="submit"

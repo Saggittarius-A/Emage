@@ -4,6 +4,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import HomeProducts from "./HomeProducts";
 import { UsersContext } from "./context/UseridContext";
+import Intro from './Intro';
 import { LoginUserContext } from "./context/LoginUserContext";
 import Portfolio from "./Portfolio";
 
@@ -21,6 +22,7 @@ const Home = (props) => {
         
         <div className="banner container-full">
           <div className="banner-content">
+           
             <div
               id="carouselExampleSlidesOnly"
               className="carousel slide"
@@ -50,7 +52,7 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> <Intro></Intro>
           <img src="./images/bannar1.jpg" alt="" />
         </div>
       <Portfolio></Portfolio>
@@ -80,11 +82,11 @@ const Home = (props) => {
         </div> */}
         
       </main>
-      <footer className="footer" >
+      {/* <footer className="footer" >
             copyright ©2021
             <h6>DBMS Project by Anjali Gautam</h6>
             <h6>Group 16</h6>
-        </footer>
+        </footer> */}
     </React.Fragment>
   );
 };

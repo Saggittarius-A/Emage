@@ -35,6 +35,7 @@ const App = (props) => {
   }, []);
 
   return (
+    <React.Fragment>
     <div>
       <LoginUserContext.Provider value={{ userLoginId, setUserLoginId }}>
         <Nav />
@@ -65,6 +66,12 @@ const App = (props) => {
         </Switch>
       </LoginUserContext.Provider>
     </div>
+    <footer className="footer" >
+            copyright ©2021
+            <h6>DBMS Project by Anjali Gautam</h6>
+            <h6>Group 16</h6>
+        </footer>
+    </React.Fragment>
   );
 };
 
