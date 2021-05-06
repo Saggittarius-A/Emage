@@ -506,15 +506,28 @@ button div {
 /* dashbord */
 
 .dash-main {
-  width: 70%;
+  padding-left: 15%;
+  padding-right: 15%;
   margin: auto;
-  margin-top: 100px;
+  padding-top: 100px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
-
+.dash1{
+  display: flex;
+  flex-direction: column;
+}
+.dash-card{
+  color: #ffffff;
+  box-sizing: border-box;
+  border-radius: 20%;
+  border: blueviolet 2px;
+  background-color: #412d4b;
+  padding: 40px;
+  margin-bottom: 70px;
+}
 .dash-main button {
   padding: 10px;
   margin: 20px;

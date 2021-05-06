@@ -52,7 +52,7 @@ app.put("/updateUser", (req, res) => {
   const password = req.body.password;
 
   const sqlUpdate =
-    "UPDATE user SET name = ?, email = ?, password = ? WHERE iduser = ?";
+    "UPDATE users SET name = ?, email = ?, password = ? WHERE iduser = ?";
 
   db.query(sqlUpdate, [name, email, password, UId], (err, result) => {
     if (err) {
@@ -63,7 +63,7 @@ app.put("/updateUser", (req, res) => {
 
 // get user details
 app.get("/getUsers", (req, res) => {
-  db.query("SELECT * FROM user", (err, result) => {
+  db.query("SELECT * FROM users", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -72,11 +72,11 @@ app.get("/getUsers", (req, res) => {
   });
 });
 
-// delete users
+// delete userss
 app.delete("/deleteUsers/:Uid", (req, res) => {
   const UId = parseInt(req.params.Uid);
 
-  const sqlDelete = "DELETE FROM user WHERE iduser = ?";
+  const sqlDelete = "DELETE FROM users WHERE iduser = ?";
 
   db.query(sqlDelete, UId, (err, result) => {
     if (err) {
@@ -89,9 +89,8 @@ app.delete("/deleteUsers/:Uid", (req, res) => {
 app.post("/login", (req, res) => {
   const userNameReg = req.body.userNameReg;
   const userPasswordReg = req.body.userPasswordReg;
-
   db.query(
-    "call login(?, ?)",
+    "SELECT * FROM users WHERE email = ? AND password = ?",
     [userNameReg, userPasswordReg],
     (err, result) => {
       if (err) {
