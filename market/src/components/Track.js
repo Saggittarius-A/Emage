@@ -44,7 +44,7 @@ export default function Track() {
                   <p>Bill No : {each.billNo}</p>
                   <p>Ordered On : {each.date} </p>
                   <p>Payment Type : {each.paymode} </p>
-                  <p>Bill Value : $ {each.total}</p>
+                  <p>Bill Value : ₹ {each.total}</p>
                   <p>Receipenet Name : {each.name} </p>
                   <p>Delivery Location : {each.adrs} </p>
                   <p>Contact Number : {each.contactNumber} </p>
@@ -64,7 +64,7 @@ export default function Track() {
                         return (
                           <tr key={order.idorder}>
                             <td>{order.pr_qty}</td>
-                            <td>$ {order.pr_price}</td>
+                            <td>₹ {order.pr_price}</td>
                           </tr>
                         );
                       }

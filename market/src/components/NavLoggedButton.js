@@ -18,16 +18,13 @@ export default function NavLoggedButton() {
 
   return (
     <div>
-       <button className="btn btn-outline-warning mr-2" >
        <Link to="/newProduct">
-        upload
+       <button className="btn btn-outline-warning mr-2">Upload</button>
         </Link>
-      </button>
-      <button className="btn btn-outline-warning mr-2" >
+      
       <Link to="/Gallery">
-        Your Gallery
+      <button className="btn btn-outline-warning mr-2" >Your Gallery</button>
         </Link>
-      </button>
       <button className="btn btn-outline-warning mr-2" onClick={UserLogout}>
         LogOut
       </button>

@@ -12,36 +12,9 @@ const Nav = (props) => {
 
   return (
     <div className="fixed-top nav-container-main">
-      <div className="collapse" id="navbarToggleExternalContent">
-        <div className="bg-dark p-4 link-set-main">
-          {/* <!-- i gave a className name link-set, link-set-main -->
-          <!-- main nav bar --> */}
-          <div className="link-set">
-            <Link to="/fruits" className="nav-link">
-              Track your Orders
-            </Link>
-            <a className="nav-link" href="#">
-              meat
-            </a>
-          </div>
-        </div>
-      </div>
       <nav className="navbar navbar-dark bg-dark subNavBar">
-        <button
-          className="navbar-toggler main-heading-part"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarToggleExternalContent"
-          aria-controls="navbarToggleExternalContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span>
-            <div></div>
-            <div></div>
-            <div></div>
-          </span>
-        </button>
+
+            <b><h2 className="nav-h2">E<span>MAGE</span></h2></b>
         {/* <!-- <div className="bottomNavBar"> --> */}
 
         <div className="heading-part">

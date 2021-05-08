@@ -35,6 +35,7 @@ const Cart = (props) => {
         <thead className="thead-dark mt-4">
           <tr>
             <th scope="col">Product Id</th>
+            <th>size</th>
             <th scope="col">Product</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
@@ -47,10 +48,11 @@ const Cart = (props) => {
             return (
               <tr key={item.idcart_items}>
                 <td>{item.idproduct}</td>
+                <td>4'X6'</td>
                 <td>{item.item_name}</td>
-                <td>$ {item.price}.00</td>
+                <td>₹ {item.price}.00</td>
                 <td>{item.qty}</td>
-                <td>$ {item.total}.00</td>
+                <td>₹ {item.total}.00</td>
                 <td>
                   <button
                     className="btn btn-danger mr-2"
@@ -69,7 +71,7 @@ const Cart = (props) => {
             finalPayment += parseInt(each.total);
           })
         : null}
-      <p className="mt-4">Total Amount : $ {finalPayment}.00</p>
+      <p className="mt-4">Total Amount : ₹ {finalPayment}.00</p>
 
       {userLoginId && finalPayment > 0 ? (
         <CheoutButtons total={finalPayment} />
