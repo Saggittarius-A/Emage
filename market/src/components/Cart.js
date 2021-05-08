@@ -48,7 +48,7 @@ const Cart = (props) => {
             return (
               <tr key={item.idcart_items}>
                 <td>{item.idproduct}</td>
-                <td>4'X6'</td>
+                <td>{item.pr_size}</td>
                 <td>{item.item_name}</td>
                 <td>₹ {item.price}.00</td>
                 <td>{item.qty}</td>

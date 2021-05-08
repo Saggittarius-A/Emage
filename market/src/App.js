@@ -16,6 +16,10 @@ import UpdateUser from "./components/adminComponents/UpdateUser";
 import Cash from "./components/payments/Cash";
 import Visa from "./components/payments/Visa";
 import Track from "./components/Track";
+import prices from "./components/Prices";
+import Sizes from "./components/adminComponents/Sizes"
+import UpdatePrices from "./components/adminComponents/UpdatePrices";
+import NewSize from "./components/adminComponents/NewSize";
 import Orders from "./components/adminComponents/Orders";
 import UpdateOrder from "./components/adminComponents/UpdateOrder";
 import BilledItems from "./components/adminComponents/BilledItems";
@@ -44,6 +48,10 @@ const App = (props) => {
           <Route exact path="/signup" component={Signup}></Route>
           <Route exact path="/dashbord" component={Dashbord}></Route>
           <Route exact path="/users" component={Users}></Route>
+          <Route exact path="/prices" component={prices}></Route>
+          <Route exact path="/newsize" component={NewSize}></Route>
+          <Route exact path="/sizes" component={Sizes}></Route>
+          <Route exact path="/updateprices" component={UpdatePrices}></Route>
           <Route exact path="/products" component={Products}></Route>
           <Route exact path="/visa/:id" component={Visa}></Route>
           <Route exact path="/cash/:id" component={Cash}></Route>

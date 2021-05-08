@@ -304,6 +304,62 @@ app.get("/getbillno/:id", (req, res) => {
     }
   );
 });
+//get price_chart
+app.get("/getPricechart", (req, res) => {
+  db.query("SELECT * FROM price_chart", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+//delete a size from price_chart
+app.delete("/deletesize/:idsize", (req, res) => {
+  const idsize = parseInt(req.params.idsize);
+
+  const sqlDelete = "DELETE FROM price_chart WHERE idsize = ?";
+
+  db.query(sqlDelete, idsize, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
+//Add a new Size
+app.post("/addSize", (req, res) => {
+  const size = req.body.size;
+  const Price = req.body.Price;
+
+  db.query(
+    "INSERT INTO price_chart(size, Price) VALUES (?,?)",
+    [ size, Price],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("successfully added");
+      }
+    }
+  );
+});
+
+// update Size
+app.put("/updateSize", (req, res) => {
+  const idsize = req.body.idsize;
+  const size = req.body.size;
+  const Price = req.body.Price;
+
+  const sqlUpdate =
+    "UPDATE size_chart SET size = ?, Price = ? WHERE idsize = ?";
+
+  db.query(sqlUpdate, [size, Price, idsize], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
 
 // send order details
 app.post("/sendOrderDetails", (req, res) => {

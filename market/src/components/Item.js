@@ -128,9 +128,9 @@ const Item = (props) => {
                   <div className="row">
                     <div className="col-md-2 col-sm-2 mt-2">
                       <div className="cart-button">
-                        <Link to="/">
-                          <button type="submit" className="btn btn-warning">
-                            Home
+                        <Link to="/prices">
+                          <button type="submit" className="btn btn-success">
+                            Price Chart
                           </button>
                         </Link>
                       </div>
