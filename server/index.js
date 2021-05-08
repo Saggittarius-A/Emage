@@ -22,7 +22,7 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "Shruti@2002",
-  database: "emaze",
+  database: "student_managment",
 });
 
 //User Registration
