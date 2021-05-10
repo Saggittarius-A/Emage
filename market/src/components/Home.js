@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import Dashbord from "./adminComponents/Dashbord";
 import Signup from "./Signup";
 import Login from "./Login";
-import HomeProducts from "./HomeProducts";
 import { UsersContext } from "./context/UseridContext";
 import Intro from './Intro';
 import { LoginUserContext } from "./context/LoginUserContext";
@@ -76,17 +74,7 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="main-container mt-4">
-          <h2 className="mt-4">All Products</h2>
-          <AllProducts reguser={reguser} />
-        </div> */}
-        
       </main>
-      {/* <footer className="footer" >
-            copyright ©2021
-            <h6>DBMS Project by Anjali Gautam</h6>
-            <h6>Group 16</h6>
-        </footer> */}
     </React.Fragment>
   );
 };

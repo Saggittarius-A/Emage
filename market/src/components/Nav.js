@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { LoginUserContext } from "./context/LoginUserContext";
-import Axios from "axios";
 import NavButton from "./NavButton";
 import NavDashbord from "./NavDashbord";
 import NavLogged from "./NavLoggedButton";
@@ -15,7 +14,6 @@ const Nav = (props) => {
       <nav className="navbar navbar-dark bg-dark subNavBar">
 
             <b><h2 className="nav-h2">E<span>MAGE</span></h2></b>
-        {/* <!-- <div className="bottomNavBar"> --> */}
 
         <div className="heading-part">
           <div className="user">

@@ -3,9 +3,10 @@ const path = require("path");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
-var nodemailer = require('nodemailer');
+require("dotenv").config();
 
 app.use(
   fileUpload({
@@ -22,7 +23,7 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "Shruti@2002",
-  database: "student_managment",
+  database: "photographer",
 });
 
 //User Registration
@@ -458,9 +459,10 @@ app.put("/updateStatus", (req, res) => {
   const id = req.body.billId;
   const status = req.body.status;
 
-  const sqlUpdate = "UPDATE billing_details SET status = ? WHERE billNo = ?";
+  const sqlUpdate = "UPDATE billing_details SET status = ? WHERE bill_id = ?";
 
   db.query(sqlUpdate, [status, id], (err, result) => {
+    console.log(id);
     if (err) {
       console.log(err);
     }
@@ -482,29 +484,49 @@ app.get("/getbilledItems", (req, res) => {
 
 
 //Emailer
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
+
+
+let transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  service: "gmail",
   auth: {
-    user: 'youremail@gmail.com',
-    pass: 'yourpassword'
-  }
-});
+    type: "OAuth2",
+    user: process.env.EMAIL,
+    pass: process.env.WORD,
+    clientId: process.env.OAUTH_CLIENTID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+  },
+ });
 
-var mailOptions = {
-  from: 'iit2019017@gmail.com',
-  to: 'myfriend@yahoo.com',
-  subject: 'Your Order ID is ',
-  text: 'That was easy!'
-};
+ transporter.verify((err, success) => {
+  err
+    ? console.log(err)
+    : console.log(`=== Server is ready to take messages: ${success} ===`);
+ });
+ app.post("/send", (req, res) => {
+  const email = req.body.email;
+  const subject = req.body.subject;
+  const text = req.body.text; 
+  console.log(text);
+  let mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: "Emaze order",
+    text: text,
+  };
+ 
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+      console.log("Error " + err);
+    } else {
+      console.log(email);
+      console.log("Email sent successfully");
+      res.json({ status: "Email sent" });
+    }
+  });
+ });
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
-
-app.listen(3001, () => {
-  console.log("server is running");
-});
+app.listen(3001, () =>{ 
+  console.log("Server running");
+})

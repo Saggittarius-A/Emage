@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav";
 import Signup from "./components/Signup";
 import { LoginUserContext } from "./components/context/LoginUserContext";
+import {EmailContext} from "./components/context/EmailContext";
 import Dashbord from "./components/adminComponents/Dashbord";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -28,14 +29,18 @@ import Gallery from "./components/Gallery";
 
 const App = (props) => {
   const [userLoginId, setUserLoginId] = useState(0);
+  // const[email, setemail] = useState(0);
 
   // to get the logged user's user id and store that in the state
   useEffect(() => {
     let getItemfromsotrage = localStorage.getItem("userID");
-
+    // let getItem = localStorage.getItem("email");
     if (getItemfromsotrage) {
       setUserLoginId(getItemfromsotrage);
     }
+    // if(getItem){
+    //   setemail(getItem);
+    // }
   }, []);
 
   return (
@@ -75,7 +80,7 @@ const App = (props) => {
       </LoginUserContext.Provider>
     </div>
     <footer className="footer" >
-            Group 16, copyright ©2021 || Beta versio 1.0
+            Group 16 || copyright ©2021 || Beta versio 1.0
             <h6>DBMS Project by Anjali Gautam</h6>
         </footer>
     </React.Fragment>

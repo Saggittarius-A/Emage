@@ -40,9 +40,9 @@ const Orders = () => {
         <tbody>
           {allbilling.map((order) => {
             return (
-              <tr key={order.billNo}>
+              <tr key={order.bill_id}>
                 <td>{order.date}</td>
-                <td>{order.billNo}</td>
+                <td>{order.bill_id}</td>
                 <td>{order.iduser}</td>
                 <td>{order.name}</td>
                 <td>{order.adrs}</td>
@@ -52,7 +52,7 @@ const Orders = () => {
                 <td>{order.paymode}</td>
                 <td className="status">{order.status}</td>
                 <td>
-                  <Link to={"/updatestatus/" + order.billNo}>
+                  <Link to={"/updatestatus/" + order.bill_id}>
                     <button className="btn btn-success mr-2">Update</button>
                   </Link>
                 </td>

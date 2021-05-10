@@ -16,12 +16,22 @@ export default function Cash(props) {
   const [paymode, setPayMode] = useState("COD");
   const [status, setStatus] = useState("Pending");
   const [message, setMessage] = useState("");
+  //const [email, setemail] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [billid, setbillid] = useState([]);
+  // const [mailerState, setMailerState] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // });
   let history = useHistory();
 
   let billNumber = billid[billid.length - 1];
-
+  let ko = toString(billid);
+  let email = localStorage.getItem("email");
+  // if(getItem){
+  //   setemail(getItem);
+  // }
   useEffect(() => {
     console.log(cartItems);
     cartItems.map((each) => {
@@ -30,7 +40,7 @@ export default function Cash(props) {
         PrPrice: each.price,
         PrQty: each.qty,
         prTotal: each.total,
-        billid: billNumber.billNo,
+        billid: billNumber.bill_id,
         date: date,
         paymode: paymode,
         total: total,
@@ -51,6 +61,7 @@ export default function Cash(props) {
     });
   }, [billid]);
 
+  
   const nameChangeHandler = (e) => {
     const name = e.target.value;
     setName(name);
@@ -66,6 +77,20 @@ export default function Cash(props) {
   const numberChangeHandler = (e) => {
     const contact = e.target.value;
     setContact(contact);
+  };
+
+  const submitEmail = async (e) => {
+    Axios.post("http://localhost:3001/send", {
+      email: email,
+      subject: "emaze",
+      text: 'Thanks ' + name + ' for Ordering. Your Order have been confirmed. Your Order_id is ' +  ko,
+    })
+      .then(() => {
+        console.log("success");
+      })
+      .catch(() => {
+        setMessage("Error! Please try again");
+      });
   };
 
   const sendOrder = (e) => {
@@ -86,7 +111,6 @@ export default function Cash(props) {
         setAddress("");
         setDistrict("");
         setContact("");
-
         getCart();
       })
       .catch(() => {
@@ -124,13 +148,13 @@ export default function Cash(props) {
     <div className="main-container mt-4">
       <div className="row mt-4">
         <div className="col-md-5 col-sm-10 offset-sm-2 offset-md-4 mt-4">
-          <h1 className="users">Cash On delivery Checkout</h1>
+          <h1 className="users">Cash On delivery Checkout</h1> 
         </div>
         <h3>{message}</h3>
       </div>
       <div className="row mt-4">
         <div className="col-md-6 col-sm-4 offset-sm-2 offset-md-3">
-          <form onSubmit={sendOrder}>
+          <form onSubmit={sendOrder, submitEmail}>
             <div section-details>
               <div className="form-group mt-4">
                 <label htmlFor="exampleInputEmail1 mt-4">Full Name</label>

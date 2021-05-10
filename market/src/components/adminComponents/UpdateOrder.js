@@ -29,6 +29,7 @@ const UpdateOrder = (props) => {
         setMessge("Successfully Updated");
       })
       .catch((err) => {
+        alert("Something wrong");
         console.log("Error! Please try again");
       });
   };

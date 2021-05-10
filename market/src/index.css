@@ -182,7 +182,7 @@ video {
 
 .hero-container {
   background:rgb(255, 255, 255);
-  height: 85vh;
+  height: 93vh;
   background-size: cover;
   width: 100%;
   display: flex;
@@ -499,33 +499,53 @@ body {
 }
 
 /* dashbord */
-
-.dash-main {
-  padding-left: 15%;
-  padding-right: 15%;
+.he{
+  width: 30%;
   margin: auto;
-  padding-top: 100px;
+  color: orange;
+  padding: 10px;
+  font-size: 3rem;
+  box-sizing: border-box;
+  border-radius: 10%;
+  
+}
+.he:hover{
+  color: #fff;
+  background-color: orange;
+}
+.basf{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
-.dash1{
-  display: flex;
-  flex-direction: column;
+.dash-main {
+  width: 70%;
+  margin: auto;
+  padding-top: 80px;
+  
 }
 .dash-card{
   color: #ffffff;
   box-sizing: border-box;
-  border-radius: 20%;
+  border-radius: 100%;
+  width: 400px;
   border: blueviolet 2px;
   background-color: #412d4b;
-  padding: 40px;
-  margin-bottom: 70px;
+  padding: 20px;
+  margin-bottom: 40px;
+  align-items: center;
 }
-.dash-main button {
-  padding: 10px;
-  margin: 20px;
+.dash-card h2{
+  padding-left: 40px;
+  padding-top: 10px;
+}
+.dash-card h2 :hover{
+  color: orange;
+}
+.dash-card button {
+  margin-left: 110px;
 }
 
 /* users */
@@ -793,19 +813,19 @@ body {
 /* footer */
 
 .appjs-content{
-  margin-bottom: 65px;
+  margin-bottom: 50px;
 }
 .footer{
   font-size: small;
   position: fixed;
   bottom: 0;
   width: 100%;
-  min-height: 50px;
-  max-height: 60px;
+  min-height: 40px;
+  max-height: 50px;
   background-color: #212529;;
   margin-top: 100px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   color:#ffffff;
   text-align: center;
   margin-bottom: 0%;

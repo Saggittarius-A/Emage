@@ -8,7 +8,6 @@ export const ProductProvider = (props) => {
     id: null,
     name: "",
     price: "",
-    category: "",
   });
 
   return (

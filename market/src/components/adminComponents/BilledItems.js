@@ -38,7 +38,7 @@ const BilledItems = () => {
               <tr key={order.idorder}>
                 <td>{order.bill_id}</td>
                 <td>{order.date}</td>
-                <td>{order.pr_name}</td>
+                <td>photo</td>
                 <td>₹ {order.pr_price}.00</td>
                 <td>{order.pr_qty}</td>
                 <td>₹ {order.pr_total}.00</td>

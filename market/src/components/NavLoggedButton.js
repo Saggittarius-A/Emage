@@ -25,12 +25,12 @@ export default function NavLoggedButton() {
       <Link to="/Gallery">
       <button className="btn btn-outline-warning mr-2" >Your Gallery</button>
         </Link>
+      <Link to="/track">
+        <button className="btn btn-outline-warning mr-2">Track order</button>
+      </Link>
       <button className="btn btn-outline-warning mr-2" onClick={UserLogout}>
         LogOut
       </button>
-      <Link to="/track">
-        <button className="btn btn-outline-warning">Track order</button>
-      </Link>
     </div>
   );
 }

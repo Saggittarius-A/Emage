@@ -41,7 +41,7 @@ export default function Track() {
             return (
               <div className="mt-4 mb-4 order-display" key={each.billNo}>
                 <div className="mt-4 order-status">
-                  <p>Bill No : {each.billNo}</p>
+                  <p>Bill No : {each.bill_id}</p>
                   <p>Ordered On : {each.date} </p>
                   <p>Payment Type : {each.paymode} </p>
                   <p>Bill Value : ₹ {each.total}</p>
@@ -60,7 +60,7 @@ export default function Track() {
                   </thead>
                   <tbody>
                     {orders.map((order) => {
-                      if (order.bill_id === each.billNo) {
+                      if (order.bill_id === each.bill_id) {
                         return (
                           <tr key={order.idorder}>
                             <td>{order.pr_qty}</td>
