@@ -189,6 +189,16 @@ app.get("/getProducts/:id", (req, res) => {
   });
 });
 
+app.get("/getProduct", (req, res) => {
+  db.query("SELECT * FROM products", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 // delete products
 app.delete("/deleteProducts/:prid", (req, res) => {
   const prId = parseInt(req.params.prid);

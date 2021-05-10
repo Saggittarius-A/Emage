@@ -11,7 +11,7 @@ const Item = (props) => {
   const[size, setsize] = useState("");
   let history = useHistory();
   useEffect(() => {
-    Axios.get("http://localhost:3001/getProducts")
+    Axios.get("http://localhost:3001/getProduct")
       .then((response) => {
         setAllItems(response.data);
       })
