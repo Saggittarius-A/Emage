@@ -178,8 +178,9 @@ app.put("/updateProducts", (req, res) => {
 });
 
 // get products
-app.get("/getProducts", (req, res) => {
-  db.query("SELECT * FROM products", (err, result) => {
+app.get("/getProducts/:id", (req, res) => {
+  const Id = parseInt(req.params.id);
+  db.query(`SELECT * FROM products WHERE iduser = ${Id}`, (err, result) => {
     if (err) {
       console.log(err);
     } else {

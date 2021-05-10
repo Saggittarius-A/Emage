@@ -1,23 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { LoginUserContext } from "./context/LoginUserContext";
 import Axios from "axios";
 
 const AllProducts = (props) => {
   const [allProducts, setAllProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState("");
-
   const [userID, setUserId] = useState(props.userID);
+  const { userLoginId, setUserLoginId } = useContext(LoginUserContext);
   let reguser = props.reguser;
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/getProducts")
+    Axios.get(`http://localhost:3001/getProducts/${userLoginId}`)
       .then((response) => {
         setAllProducts(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [userLoginId]);
 
   const deleteProducts = (id) => {
     Axios.delete(`http://localhost:3001/deleteProducts/${id}`);
