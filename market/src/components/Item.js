@@ -8,7 +8,7 @@ const Item = (props) => {
   const [qty, setQty] = useState();
   const { userLoginId, setUserLoginId } = useContext(LoginUserContext);
   const [msg, setMsg] = useState("");
-  const[size, setSize]= useState();
+  const[size, setsize] = useState("");
   let history = useHistory();
   useEffect(() => {
     Axios.get("http://localhost:3001/getProducts")
@@ -20,9 +20,9 @@ const Item = (props) => {
       });
   }, []);
 
-  const getSize = (e) => {
+  const getsize = (e) => {
     let size = e.target.value;
-    setSize(size);
+    setsize(size);
   };
 
   const getQuantity = (e) => {
@@ -89,15 +89,15 @@ const Item = (props) => {
                 <p>Please choose Size and Quantity</p>
                   <p style={{ fontWeight: "800" }}>Size:
                   <select
-                        onChange={getSize}
+                        onChange={getsize}
                         className="ml-4"
                         style={{ padding: "5px" }}
                         required
                       >
-                        <option value="0">4'X6'</option>
-                        <option value="1">6'X4'</option>
-                        <option value="2">8'X6'</option>
-                        <option value="3">6'X8'</option>
+                        <option value="4'X6'">4'X6'</option>
+                        <option value="6'X4'">6'X4'</option>
+                        <option value="8'X6'">8'X6'</option>
+                        <option value="6'X8'">6'X8'</option>
                       </select>
                   
                   </p>

@@ -213,8 +213,8 @@ app.post("/addToCart", (req, res) => {
   const prImage = req.body.prImage;
 
   db.query(
-    "INSERT INTO cart_items( price, qty, iduser, total, idproduct) VALUES (?,?,?,?,?)",
-    [ prPrice, qty, userid, total, prid],
+    "INSERT INTO cart_items( price, qty, iduser, total, idproduct, size) VALUES (?,?,?,?,?,?)",
+    [ prPrice, qty, userid, total, prid, size],
     (err, result) => {
       if (err) {
         console.log(err);
