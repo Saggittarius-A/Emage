@@ -142,7 +142,7 @@ app.post("/picture", async (req, res) => {
     } else {
       const { picture } = req.files;
 
-      picture.mv("../market/public/uploads/" + picture.name);
+      picture.mv("../client/public/uploads/" + picture.name);
       res.send({
         status: true,
         message: "uploaded",
