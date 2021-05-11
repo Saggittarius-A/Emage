@@ -384,9 +384,10 @@ app.post("/sendOrderDetails", (req, res) => {
   const paymode = req.body.paymode;
   const total = req.body.total;
   const userid = req.body.userid;
+  const size = req.body.PrSize;
 
   db.query(
-    "INSERT INTO orders(date, bill_id, iduser, bill_amount, paymode, pr_name, pr_price, pr_qty, pr_total) VALUES (?,?,?,?,?,?,?,?,?)",
+    "INSERT INTO orders(date, bill_id, iduser, bill_amount, paymode, pr_name, pr_price, pr_qty, pr_total, size) VALUES (?,?,?,?,?,?,?,?,?,?)",
     [
       date,
       bill_id,
@@ -397,6 +398,7 @@ app.post("/sendOrderDetails", (req, res) => {
       product_price,
       product_qty,
       product_total,
+      size,
     ],
     (err, result) => {
       if (err) {

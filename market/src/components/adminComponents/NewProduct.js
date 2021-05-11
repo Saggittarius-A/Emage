@@ -62,7 +62,7 @@ const NewProduct = () => {
             <div className="form-group mt-4">
             </div>
             <div className="form-group mt-4">
-              <label htmlFor="exampleInputEmail1 mt-4">Price</label>
+              <label htmlFor="exampleInputEmail1 mt-4">Number Of Uploads</label>
               <input
                 type="number"
                 onChange={productPriceChangeHandler}
@@ -84,11 +84,6 @@ const NewProduct = () => {
                 name="picture"
                 accept=""
               />
-            </div>
-            <div className="form-group mt-4">
-              <label htmlFor="exampleInputPassword1 mt-4">
-                Select category
-              </label>
             </div>
             <button type="submit" className="btn btn-warning mr-2">
               Add

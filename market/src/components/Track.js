@@ -53,7 +53,7 @@ export default function Track() {
                 <table className="table mt-4">
                   <thead className="thead-dark">
                     <tr>
-                      <th scope="col">Product Name</th>
+                      <th scope="col">Image Size</th>
                       <th scope="col">Quantity</th>
                       <th scope="col">Price</th>
                     </tr>
@@ -63,6 +63,7 @@ export default function Track() {
                       if (order.bill_id === each.bill_id) {
                         return (
                           <tr key={order.idorder}>
+                            <td>{order.size}</td>
                             <td>{order.pr_qty}</td>
                             <td>₹ {order.pr_price}</td>
                           </tr>

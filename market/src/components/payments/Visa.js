@@ -24,6 +24,7 @@ export default function Visa(props) {
   const [billid, setbillid] = useState([]);
   let billNumber = billid[billid.length - 1];
   let history = useHistory();
+  let email = localStorage.getItem("email");
 
   useEffect(() => {
     cartItems.map((each) => {
@@ -32,7 +33,8 @@ export default function Visa(props) {
         PrPrice: each.price,
         PrQty: each.qty,
         prTotal: each.total,
-        billid: billNumber.billNo,
+        PrSize: each.size,
+        billid: billNumber.bill_id,
         date: date,
         paymode: paymode,
         total: total,
@@ -111,7 +113,19 @@ export default function Visa(props) {
         setMessage("Error! Please try again");
       });
   };
-
+  const submitEmail = async (e) => {
+    Axios.post("http://localhost:3001/send", {
+      email: email,
+      subject: "emaze",
+      text: 'Thanks ' + name + ' for Ordering. Your Order have been confirmed. ',
+    })
+      .then(() => {
+        console.log("success");
+      })
+      .catch(() => {
+        setMessage("Error! Please try again");
+      });
+  };
   const sendCard = () => {
     Axios.post("http://localhost:3001/addCard", {
       userid: userLoginId,
@@ -259,7 +273,7 @@ export default function Visa(props) {
                 />
               </div>
             </div>
-            <button type="submit" className="btn btn-warning mr-2 mb-4">
+            <button type="submit" className="btn btn-warning mr-2 mb-4" onClick={submitEmail}>
               Checkout
             </button>
             <Link to="/cart">
