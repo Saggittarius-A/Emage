@@ -154,7 +154,7 @@ export default function Cash(props) {
       </div>
       <div className="row mt-4">
         <div className="col-md-6 col-sm-4 offset-sm-2 offset-md-3">
-          <form onSubmit={sendOrder, submitEmail}>
+          <form onSubmit={sendOrder}>
             <div section-details>
               <div className="form-group mt-4">
                 <label htmlFor="exampleInputEmail1 mt-4">Full Name</label>
@@ -201,7 +201,7 @@ export default function Cash(props) {
                 />
               </div>
             </div>
-            <button type="submit" className="btn btn-warning mr-2">
+            <button type="submit" onClick={submitEmail} className="btn btn-warning mr-2">
               Checkout
             </button>
             <Link to="/cart">

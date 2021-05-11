@@ -34,7 +34,7 @@ const Cart = (props) => {
       <table className="table mt-4">
         <thead className="thead-dark mt-4">
           <tr>
-            <th scope="col">Product Id</th>
+            <th scope="col">Image ID</th>
             <th>size</th>
             <th scope="col">Product</th>
             <th scope="col">Price</th>

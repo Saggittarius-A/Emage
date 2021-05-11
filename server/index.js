@@ -6,6 +6,7 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 const fileUpload = require("express-fileupload");
 const morgan = require("morgan");
+const { encrypt, decrypt } = require("./encrypt");
 require("dotenv").config();
 
 app.use(
@@ -31,10 +32,11 @@ app.post("/addUser", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
+  const hashedPassword = encrypt(password);
 
   db.query(
-    "select new_registration(?, ?, ?)",
-    [name, email, password],
+    "INSERT INTO users(name, email, password, iv) VALUES (?,?,?,?)",
+    [name, email, hashedPassword.password, hashedPassword.iv],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -86,19 +88,31 @@ app.delete("/deleteUsers/:Uid", (req, res) => {
   });
 });
 
+app.post("/decryptpassword", (req, res) => {
+  res.send(decrypt(req.body));
+});
 // user authentication for login
 app.post("/login", (req, res) => {
   const userNameReg = req.body.userNameReg;
   const userPasswordReg = req.body.userPasswordReg;
+  const hashedPassword = encrypt(userPasswordReg);
   db.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
-    [userNameReg, userPasswordReg],
+    "SELECT * FROM users WHERE email = ? ",
+    [userNameReg],
     (err, result) => {
       if (err) {
         res.send({ error: err });
       }
       if (result.length > 0) {
+        const p={
+          iv: result[0].iv,
+          password: result[0].password,
+        }
+        const k=decrypt(p);
+        if(k==userPasswordReg){
         res.send(result);
+      }else{
+        console.log("Password incorrect");}
       } else {
         res.send({ message: "wrong username and passowrd" });
       }
@@ -141,12 +155,11 @@ app.post("/picture", async (req, res) => {
 
 // send entered product details to the database
 app.post("/addProducts", (req, res) => {
-  const prPrice = req.body.prPrice;
   const prImage = req.body.prImage;
   const iduser= req.body.iduser;
   db.query(
-    "INSERT INTO products( price, prImage, iduser) VALUES (?,?,?)",
-    [prPrice, prImage, iduser],
+    "INSERT INTO products(prImage, iduser) VALUES (?,?)",
+    [prImage, iduser],
     (err, result) => {
       if (err) {
         console.log(err);

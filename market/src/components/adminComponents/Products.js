@@ -8,7 +8,7 @@ const Products = () => {
 
   // get the product details
   useEffect(() => {
-    Axios.get("http://localhost:3001/getProducts")
+    Axios.get("http://localhost:3001/getProduct")
       .then((response) => {
         setAllProducts(response.data);
       })
@@ -42,7 +42,7 @@ const Products = () => {
       <table class="table mt-4">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Product Id</th>
+            <th scope="col">Image Id</th>
             <th scope="col">Price</th>
             <th scope="col">userid</th>
             <th scope="col">Delete</th>
@@ -65,7 +65,7 @@ const Products = () => {
               return (
                 <tr key={product.idproducts}>
                   <td>{product.idproducts}</td>
-                  <td>$ {product.price}</td>
+                  <td> {product.price}</td>
                   <td>{product.iduser}</td>
                   <td>
                     <button
