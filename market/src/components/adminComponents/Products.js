@@ -65,7 +65,7 @@ const Products = () => {
               return (
                 <tr key={product.idproducts}>
                   <td>{product.idproducts}</td>
-                  <td> {product.price}</td>
+                  <td> ₹ 60.00</td>
                   <td>{product.iduser}</td>
                   <td>
                     <button
