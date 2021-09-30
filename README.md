@@ -20,7 +20,7 @@
 make Account on https://console.cloud.google.com/home
 get OAUTH_CLIENTID,OAUTH_CLIENT_SECRET,OAUTH_REFRESH_TOKEN.
 
-# make .env in server file
+# make .env in server files
 
 EMAIL=youremail@gmail.com
 WORD=youremailpassword
