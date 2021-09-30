@@ -9,7 +9,7 @@
 
 ### npm init
 
-### install all the depencies by looking in Index.js file
+### install all the depencies by looking in Index.js files
 
 ### for running client i.e market 
 ### do npm i 
